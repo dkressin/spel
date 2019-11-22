@@ -1,5 +1,209 @@
 ## Changelog
 
+### 2019.11.1
+
+**Released**: 2019.11.19
+
+**Commit Delta**: [Change from 2019.10.1 release](https://github.com/plus3it/spel/compare/2019.10.1...2019.11.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.11.1/manifests>
+
+**Summary**:
+
+*   "Extra" packages updated in this release:
+    - aws-cli/1.16.284
+    - amazon-ssm-agent-2.3.760.0-1
+    - amazon-linux-extras-1.6.9-2.el7.noarch
+    - amazon-linux-extras-yum-plugin-1.6.9-2.el7.noarch
+    - ec2-instance-connect-1.1-11.el7.noarch
+    - ec2-utils-1.0-2.el7.noarch
+
+### 2019.10.1
+
+**Released**: 2019.10.18
+
+**Commit Delta**: [Change from 2019.09.1 release](https://github.com/plus3it/spel/compare/2019.09.1...2019.10.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.10.1/manifests>
+
+**Summary**:
+
+*   "Extra" packages updated in this release:
+    - aws-cli/1.16.263
+    - amazon-ssm-agent-2.3.714.0-1
+
+### 2019.09.1
+
+**Released**: 2019.09.17
+
+**Commit Delta**: [Change from 2019.08.1 release](https://github.com/plus3it/spel/compare/2019.08.1...2019.09.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.09.1/manifests>
+
+**Summary**:
+
+*   "Extra" packages updated in this release:
+    - aws-cli/1.16.239
+    - amazon-efs-utils-1.10-1
+    - amazon-linux-extras-1.6.9-1
+    - amazon-linux-extras-yum-plugin-1.6.9-1
+    - amazon-ssm-agent-2.3.707.0-1
+    - ec2-instance-connect-1.1-10
+
+*   CentOS-Only:
+    - Minor-release update to 7.7 (see [vendor release notes](http://wiki.centos.org/Manuals/ReleaseNotes/CentOS7) for detailing of 7.6 to 7.7 changes)
+    - Python 3.6 package from vendor repository (`python3` RPM) obsoletes package from EPEL (`python36` RPM)
+
+### 2019.08.1
+
+**Released**: 2019.08.13
+
+**Commit Delta**: [Change from 2019.07.1 release](https://github.com/plus3it/spel/compare/2019.07.1...2019.08.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.08.1/manifests>
+
+**Summary**:
+
+*   "Extra" packages updated in this release:
+    - aws-cli upgraded to version 1.16.217
+    - amazon-ssm-agent RPM upgraded to 2.3.687.0-1.x86_64
+
+*   RHEL-Only:
+    - Minor-release update to 7.7 (see [vendor release notes](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7-beta/html/7.7_release_notes/index) for detailing of 7.6 to 7.7 changes)
+    - Python 3.6 package from vendor repository (`python3` RPM) obsoletes package from EPEL (`python36` RPM)
+
+
+### 2019.07.1
+
+**Released**: 2019.07.16
+
+**Commit Delta**: [Change from 2019.06.1 release](https://github.com/plus3it/spel/compare/2019.06.1...2019.07.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.07.1/manifests>
+
+**Summary**:
+
+*   "Extra" packages updated in this release:
+    - aws-cli upgraded to version 1.16.198
+    - amazon-ssm-agent RPM upgraded to 2.3.672.0-1
+    - ec2-hibinit-agent RPM upgraded to version 1.0.0-4
+
+*   Vendor-packages introduced in this release:
+    - acpid RPM
+
+*   "Extra" packages introduced in this release:
+    - amazon-ecr-credential-helper (version 0.3.0-1) RPM
+    - amazon-ecr-credential-helper-debuginfo (version 0.3.0-1) RPM
+    - amazon-efs-utils (version 1.7-1) RPM
+    - amazon-linux-extras (version 1.6.8-1) RPM
+    - amazon-linux-extras-yum-plugin (version 1.6.8-1) RPM
+    - amazonlinux-indexhtml (version 1-1) RPM
+    - ec2-instance-connect (version 1.1-9) RPM
+    - ec2-net-utils (version 1.1-1.1) RPM
+    - ec2sys-autotune (version 1.0.5-1) RPM
+    - ec2-utils (version 0.5-1) RPM
+
+*   Newly-activated Services/Agents:
+    - [EC2 autotune service](https://github.com/amazonlinux/autotune#description)
+    - [Amazon SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/prereqs-ssm-agent.html)
+    - [Amazon Hibernate Agent](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html)
+    - [EC2 Instance Connect service](https://aws.amazon.com/about-aws/whats-new/2019/06/introducing-amazon-ec2-instance-connect/)
+
+### 2019.06.1
+
+**Released**: 2019.06.19
+
+**Commit Delta**: [Change from 2019.05.1 release](https://github.com/plus3it/spel/compare/2019.05.1...2019.06.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.06.1/manifests>
+
+**Summary**:
+
+*   Sets `/boot` partition to 512MB for vagrant boxes, see [PR #305](https://github.com/plus3it/spel/pull/305)
+*   "Extra" package updates
+    - aws-cli/1.16.181
+    - amazon-ssm-agent-2.3.662.0-1
+
+### 2019.05.1
+
+**Released**: 2019.05.21
+
+**Commit Delta**: [Change from 2019.04.1 release](https://github.com/plus3it/spel/compare/2019.04.1...2019.05.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.05.1/manifests>
+
+**Summary**:
+
+*   "Extra" package updates
+    - aws-cli/1.16.162
+    - amazon-ssm-agent-2.3.612
+    - python36-3.6.8-1
+    - python36-libs-3.6.8-1
+
+### 2019.04.1
+
+**Released**: 2019.04.16
+
+**Commit Delta**: [Change from 2019.03.1 release](https://github.com/plus3it/spel/compare/2019.03.1...2019.04.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.04.1/manifests>
+
+**Summary**:
+
+*   "Extra" package updates
+    -   aws-cli/1.16.140
+    -   amazon-ssm-agent-2.3.539.0-1
+    -   python36-3.6.6-5
+    -   python36-libs-3.6.6-5
+
+### 2019.03.1
+
+**Released**: 2019.02.19
+
+**Commit Delta**: [Change from 2019.02.1 release](https://github.com/plus3it/spel/compare/2019.02.1...2019.03.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.03.1/manifests>
+
+**Summary**:
+
+*   "Extra" package updates
+    -   aws-cli/1.16.126
+    -   amazon-ssm-agent-2.3.479.0-1
+    -   aws-cfn-bootstrap-1.4-31
+    -   aws-cli/1.16.126
+    -   amazon-ssm-agent-2.3.479.0-1
+    -   aws-cfn-bootstrap-1.4-31
+
+### 2019.02.1
+
+**Released**: 2019.02.19
+
+**Commit Delta**: [Change from 2019.01.1 release](https://github.com/plus3it/spel/compare/2019.01.1...2019.02.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.02.1/manifests>
+
+**Summary**:
+
+*   "Extra" package updates
+    -   aws-cli/1.16.107
+    -   amazon-ssm-agent-2.3.444.0-1
+    -   python36-libs-3.6.6-2
+    -   python36-3.6.6-2
+
+### 2019.01.1
+
+**Released**: 2019.01.16
+
+**Commit Delta**: [Change from 2018.12.1 release](https://github.com/plus3it/spel/compare/2018.12.1...2019.01.1)
+
+**Manifests**: <https://github.com/plus3it/spel/blob/2019.01.1/manifests>
+
+**Summary**:
+
+*   "Extra" package updates
+    -   aws-cli/1.16.89
+    -   amazon-ssm-agent-2.3.372.0-1
+
 ### 2018.12.1
 
 **Released**: 2018.12.11
@@ -51,7 +255,7 @@
 *   "Extra" package updates
     -   aws-cli/1.16.53
     -   amazon-ssm-agent-2.3.235.0-1
-    -   python36-3.6.6-1.el7.x86_64
+    -   python36-3.6.6-1
 
 ### 2018.10.1
 
@@ -129,8 +333,8 @@
 *   "Extra" package updates
     -   aws-cli/1.15.40
     -   amazon-ssm-agent-2.2.619.0-1
-    -   python34-3.4.8-1.el6
-    -   python34-libs-3.4.8-1.el6
+    -   (EL6) python34-3.4.8-1
+    -   (EL6) python34-libs-3.4.8-1
 
 ### 2018.05.1
 
@@ -171,7 +375,7 @@
 *   "Extra" package updates
     -   aws-cli/1.15.4
     -   amazon-ssm-agent-2.2.392.0-1
-    -   python34-3.4.8-1.el7
+    -   (EL7) python34-3.4.8-1
 *   spel-minimal-rhel-7.4-hvm
     -   Despite the name, this is a RHEL 7.5 AMI
 

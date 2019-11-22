@@ -13,7 +13,7 @@
             "guest_os_type": "RedHat_64",
             "headless": true,
             "http_directory": "{{ template_dir }}/kickstarts",
-            "iso_checksum": "714acc0aefb32b7d51b515e25546835e55a90da9fb00417fbee2d03a62801efd",
+            "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
             "iso_checksum_type": "sha256",
             "iso_url": "{{ user `iso_url_centos7` }}",
             "name": "minimal-centos-7-virtualbox",
@@ -35,8 +35,9 @@
             "ami_users": "{{ user `ami_users` }}",
             "associate_public_ip_address": true,
             "communicator": "ssh",
+            "ena_support": true,
             "force_deregister": "{{ user `ami_force_deregister` }}",
-            "instance_type": "m4.xlarge",
+            "instance_type": "{{ user `aws_ec2_instance_type` }}",
             "launch_block_device_mappings": [
                 {
                     "delete_on_termination": true,
@@ -48,15 +49,16 @@
             "name": "minimal-centos-7-hvm",
             "region": "{{ user `aws_region` }}",
             "source_ami": "{{ user `source_ami_centos7_hvm` }}",
+            "sriov_support": true,
             "ssh_interface": "{{ user `ssh_interface` }}",
             "ssh_port": 122,
             "ssh_pty": true,
             "ssh_timeout": "60m",
             "ssh_username": "spel",
             "subnet_id": "{{ user `subnet_id` }}",
+            "temporary_security_group_source_cidrs": "{{ user `security_group_cidrs` }}",
             "type": "amazon-ebs",
-            "user_data_file": "{{ template_dir }}/userdata/tmpfsroot-el7.cloud",
-            "vpc_id": "{{ user `vpc_id` }}"
+            "user_data_file": "{{ template_dir }}/userdata/tmpfsroot-el7.cloud"
         },
         {
             "ami_description": "STIG-partitioned [*NOT HARDENED*], LVM-enabled, \"minimal\" RHEL 7 AMI (yum and license chargeback included) with updates through {{ isotime \"2006-01-02\" }}. Default username `maintuser`. See {{ user `spel_desc_url` }}.",
@@ -66,8 +68,9 @@
             "ami_users": "{{ user `ami_users` }}",
             "associate_public_ip_address": true,
             "communicator": "ssh",
+            "ena_support": true,
             "force_deregister": "{{ user `ami_force_deregister` }}",
-            "instance_type": "t2.large",
+            "instance_type": "{{ user `aws_ec2_instance_type` }}",
             "launch_block_device_mappings": [
                 {
                     "delete_on_termination": true,
@@ -79,15 +82,16 @@
             "name": "minimal-rhel-7-hvm",
             "region": "{{ user `aws_region` }}",
             "source_ami": "{{ user `source_ami_rhel7_hvm` }}",
+            "sriov_support": true,
             "ssh_interface": "{{ user `ssh_interface` }}",
             "ssh_port": 122,
             "ssh_pty": true,
             "ssh_timeout": "60m",
             "ssh_username": "spel",
             "subnet_id": "{{ user `subnet_id` }}",
+            "temporary_security_group_source_cidrs": "{{ user `security_group_cidrs` }}",
             "type": "amazon-ebs",
-            "user_data_file": "{{ template_dir }}/userdata/tmpfsroot-el7.cloud",
-            "vpc_id": "{{ user `vpc_id` }}"
+            "user_data_file": "{{ template_dir }}/userdata/tmpfsroot-el7.cloud"
         },
         {
             "capture_container_name": "images",
@@ -113,7 +117,7 @@
             "type": "azure-arm",
             "virtual_network_name": "{{ user `azure_virtual_network_name` }}",
             "virtual_network_subnet_name": "{{ user `azure_subnet_name` }}",
-            "vm_size": "Standard_DS2_v2"
+            "vm_size": "{{ user `azure_vm_size` }}"
         },
         {
             "client_id": "{{user `azure_client_id`}}",
@@ -138,7 +142,7 @@
             "type": "azure-arm",
             "virtual_network_name": "{{ user `azure_virtual_network_name` }}",
             "virtual_network_subnet_name": "{{ user `azure_subnet_name` }}",
-            "vm_size": "Standard_DS2_v2"
+            "vm_size": "{{ user `azure_vm_size` }}"
         }
     ],
     "post-processors": [
@@ -242,6 +246,7 @@
                 "SPEL_AWSCLISOURCE={{ user `spel_awsclisource` }}",
                 "SPEL_BOOTLABEL=/boot",
                 "SPEL_BUILDDEPS=lvm2 parted yum-utils unzip git",
+                "SPEL_BUILDNAME={{ build_name }}",
                 "SPEL_CHROOT=/mnt/ec2-root",
                 "SPEL_DEVNODE=/dev/xvda",
                 "SPEL_CLOUDPROVIDER=aws",
@@ -270,6 +275,7 @@
                 "SPEL_AWSCLISOURCE={{ user `spel_awsclisource` }}",
                 "SPEL_BOOTLABEL=/boot",
                 "SPEL_BUILDDEPS=lvm2 parted yum-utils unzip git",
+                "SPEL_BUILDNAME={{ build_name }}",
                 "SPEL_CHROOT=/mnt/ec2-root",
                 "SPEL_DEVNODE=/dev/sda",
                 "SPEL_CLOUDPROVIDER=azure",
@@ -316,6 +322,7 @@
         "ami_groups": "",
         "ami_regions": "",
         "ami_users": "",
+        "aws_ec2_instance_type": "t2.xlarge",
         "aws_region": "us-east-1",
         "azure_client_id": "{{env `ARM_CLIENT_ID`}}",
         "azure_client_secret": "{{env `ARM_CLIENT_SECRET`}}",
@@ -330,7 +337,9 @@
         "azure_subnet_name": "",
         "azure_subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
         "azure_virtual_network_name": "",
-        "iso_url_centos7": "http://mirror.cs.vt.edu/pub/CentOS/7.5.1804/isos/x86_64/CentOS-7-x86_64-Minimal-1804.iso",
+        "azure_vm_size": "Standard_DS2_v2",
+        "iso_url_centos7": "http://mirror.cs.vt.edu/pub/CentOS/7/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+        "security_group_cidrs": "0.0.0.0/0",
         "source_ami_centos7_hvm": "ami-090b9dabe1c9f40b3",
         "source_ami_rhel7_hvm": "ami-0394fe9914b475c53",
         "spel_amigen7source": "https://github.com/plus3it/AMIgen7.git",
@@ -348,7 +357,6 @@
         "ssh_interface": "public_dns",
         "subnet_id": "",
         "vagrantcloud_token": "{{env `VAGRANTCLOUD_TOKEN`}}",
-        "vagrantcloud_username": "",
-        "vpc_id": ""
+        "vagrantcloud_username": ""
     }
 }
